@@ -35,5 +35,5 @@ CREATE TABLE `telefone` (
   `descricao` VARCHAR(100) NOT NULL,
   `tipo` ENUM('M', 'F') NOT NULL DEFAULT 'M',
   PRIMARY KEY (`id_cliente`, `fone`),
-  FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id_cliente`)
+  FOREIGN KEY (`id_cliente`) REFERENCES `cliente`(`id_cliente`)
 );
