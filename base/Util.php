@@ -50,11 +50,7 @@ class Util
     CONST DATE_END        = 'DATE_END';   // save as (Y-m-d 23:59:59), display as (d/m/Y 23:59:59)
     CONST DATE_TIMESTAMP  = 'TIMESTAMP';  // return timeStamp (mkdir)
     CONST DATE_TIME       = 'TIME';       // return only time (H:i:s)
-    
-    // infos default da CPN
-    CONST CPN_TELEFONE = "(41) 3653-2681";
-    CONST CPN_EMAIL_SUPORTE = "suporte@cpninformatica.com.br";
-    
+   
     /**
      * Retorna uma lista html com os erros retornados na validação da model
      *
