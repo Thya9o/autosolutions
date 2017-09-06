@@ -44,7 +44,7 @@ class Cliente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'sobrenome', 'data_cadastro', 'tipo'], 'required'],
+            [['nome', 'sobrenome', 'data_cadastro'], 'required'],
             [['sexo'], 'string'],
             [['data_nascimento', 'data_cadastro'], 'safe'],
             [['id_cidade', 'id_estado', 'situacao'], 'integer'],
@@ -66,23 +66,23 @@ class Cliente extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_cliente' => 'Id Cliente',
+            'id_cliente' => 'Cód.',
             'nome' => 'Nome',
             'sobrenome' => 'Sobrenome',
             'apelido' => 'Apelido',
             'documento' => 'Documento',
             'sexo' => 'Sexo',
-            'data_nascimento' => 'Data Nascimento',
-            'data_cadastro' => 'Data Cadastro',
-            'cep' => 'Cep',
-            'endereco' => 'Endereco',
+            'data_nascimento' => 'Data de Nascimento',
+            'data_cadastro' => 'Data de Cadastro',
+            'cep' => 'CEP',
+            'endereco' => 'Endereço',
             'numero' => 'Numero',
             'complemento' => 'Complemento',
             'bairro' => 'Bairro',
-            'id_cidade' => 'Id Cidade',
-            'id_estado' => 'Id Estado',
+            'id_cidade' => 'Cidade',
+            'id_estado' => 'Estado',
             'email' => 'Email',
-            'situacao' => 'Situacao',
+            'situacao' => 'Situação',
             'tipo' => 'Tipo',
         ];
     }
@@ -93,5 +93,19 @@ class Cliente extends \yii\db\ActiveRecord
     public function getTelefones()
     {
         return $this->hasMany(Telefone::className(), ['id_cliente' => 'id_cliente']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+        
+        $this->data_cadastro = date('Y-m-d');
+        
+        return true;
     }
 }

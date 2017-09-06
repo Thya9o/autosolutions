@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ClienteController implements the CRUD actions for Cliente model.
  */
-class ClienteController extends Controller
+class ClienteController extends BaseController
 {
     /**
      * @inheritdoc
@@ -45,33 +45,22 @@ class ClienteController extends Controller
     }
 
     /**
-     * Displays a single Cliente model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
      * Creates a new Cliente model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCadastrar()
     {
         $model = new Cliente();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_cliente]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+          
+        return $this->render('create', [
+        	'model' => $model,
+        ]);
+        
     }
 
     /**
@@ -80,17 +69,17 @@ class ClienteController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionAlterar($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_cliente]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+        
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -99,10 +88,9 @@ class ClienteController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDeletar($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -115,9 +103,9 @@ class ClienteController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Cliente::findOne($id)) !== null) {
+        if(($model = Cliente::findOne($id)) !== null) {
             return $model;
-        } else {
+        }else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
