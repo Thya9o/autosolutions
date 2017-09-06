@@ -113,3 +113,13 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+/* custom css */
+.btn-flat {
+	border-radius: 0px !important;
+}
+.panel, .panel-heading, .panel-body, .panel-footer {
+	border-radius: 0px !important;
+}
+.panel-heading, .panel-body {
+	padding: 30px;
+}

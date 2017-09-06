@@ -4,7 +4,7 @@
 -- Cria uma database inicial (vazia)
 -- ----------------------------------------------------------------------------------------------------------------
 --  cria a database
-CREATE DATABASE `autosolutions`;
+CREATE DATABASE `autosolutions` CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
 -- ----------------------------------------------------------------------------------------------------------------
 -- cria a tabela de clientes
 CREATE TABLE `cliente` (
@@ -12,7 +12,7 @@ CREATE TABLE `cliente` (
   `nome` VARCHAR(100) NOT NULL,
   `sobrenome` VARCHAR(150) NOT NULL,
   `apelido` VARCHAR(100) DEFAULT NULL,
-  `documento` VARCHAR(14) DEFAULT NULL,
+  `documento` VARCHAR(14) DEFAULT NULL COMMENT 'Documento pode ser usado para CPF, RG ou CNPJ',
   `sexo` ENUM('M', 'F') DEFAULT 'M',
   `data_nascimento` DATETIME DEFAULT NULL,
   `data_cadastro` DATETIME NOT NULL,
@@ -25,8 +25,8 @@ CREATE TABLE `cliente` (
   `id_estado` INT DEFAULT NULL,
   `email` VARCHAR(100) DEFAULT NULL,
   `situacao` INT DEFAULT NULL,
-  `tipo` CHAR(1) NOT NULL
-);
+  `tipo` CHAR(1)
+) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
 -- cria a tabela de telefone
 CREATE TABLE `telefone` (
@@ -35,5 +35,5 @@ CREATE TABLE `telefone` (
   `descricao` VARCHAR(100) NOT NULL,
   `tipo` ENUM('M', 'F') NOT NULL DEFAULT 'M',
   PRIMARY KEY (`id_cliente`, `fone`),
-  FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id_cliente`)
-);
+  FOREIGN KEY (`id_cliente`) REFERENCES `cliente`(`id_cliente`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
