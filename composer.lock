@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcb2a51993fc4becc473192d20580cd4",
+    "content-hash": "95155570d5876e043066b9b36ef1f266",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -4760,16 +4760,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.0.10",
+            "version": "2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "ad1d1780d59dc3417b4a32bab8cadac4908359eb"
+                "reference": "372fbf0d47303b7d68275d6720935e5116915418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/ad1d1780d59dc3417b4a32bab8cadac4908359eb",
-                "reference": "ad1d1780d59dc3417b4a32bab8cadac4908359eb",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/372fbf0d47303b7d68275d6720935e5116915418",
+                "reference": "372fbf0d47303b7d68275d6720935e5116915418",
                 "shasum": ""
             },
             "require": {
@@ -4803,7 +4803,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-09-04T09:42:28+00:00"
+            "time": "2017-09-05T23:21:05+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",

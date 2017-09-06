@@ -61,13 +61,18 @@ AppAsset::register($this);
     </div>
 </div>
 <footer class="footer">
-	<?= Yii::$app->language ?>
     <div class="container">
         <p class="pull-left">&copy; Auto Solutions <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
+<?php
+$script = <<< JS
+   
+JS;
+$this->registerJs($script);
+?>
 <?php $this->endBody() ?>
 </body>
 </html>
