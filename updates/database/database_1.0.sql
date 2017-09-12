@@ -40,10 +40,10 @@ CREATE TABLE `telefone` (
 
 -- cria a tabela de telefone
 CREATE TABLE `veiculo` (
-	  `placa` CHAR(7) NOT NULL PRIMARY KEY,
-    `marca` VARCHAR(100),
-    `modelo` VARCHAR(100),
-    `ano` DATETIME,
-    `cor` VARCHAR(100),
-    `detalhes` VARCHAR(250) COMMENT 'Detalhes e caracteristicas adicionais do veiculo'
+  `placa` CHAR(7) NOT NULL PRIMARY KEY,
+  `marca` VARCHAR(100),
+  `modelo` VARCHAR(100),
+  `ano` DATETIME,
+  `cor` VARCHAR(100),
+  `detalhes` VARCHAR(250) COMMENT 'Detalhes e caracteristicas adicionais do veiculo'
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
