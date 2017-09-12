@@ -11,20 +11,20 @@ CREATE TABLE `cliente` (
   `id_cliente` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nome` VARCHAR(100) NOT NULL,
   `sobrenome` VARCHAR(150) NOT NULL,
-  `apelido` VARCHAR(100) DEFAULT NULL,
-  `documento` VARCHAR(14) DEFAULT NULL COMMENT 'Documento pode ser usado para CPF, RG ou CNPJ',
+  `apelido` VARCHAR(100),
+  `documento` VARCHAR(14) COMMENT 'Documento pode ser usado para CPF, RG ou CNPJ',
   `sexo` ENUM('M', 'F') DEFAULT 'M',
-  `data_nascimento` DATETIME DEFAULT NULL,
+  `data_nascimento` DATETIME,
   `data_cadastro` DATETIME NOT NULL,
-  `cep` CHAR(8) DEFAULT NULL,
-  `endereco` VARCHAR(50) DEFAULT NULL,
-  `numero` VARCHAR(5) DEFAULT NULL,
-  `complemento` VARCHAR(20) DEFAULT NULL,
-  `bairro` VARCHAR(30) DEFAULT NULL,
-  `id_cidade` INT DEFAULT NULL,
-  `id_estado` INT DEFAULT NULL,
-  `email` VARCHAR(100) DEFAULT NULL,
-  `situacao` INT DEFAULT NULL,
+  `cep` CHAR(8),
+  `endereco` VARCHAR(50),
+  `numero` VARCHAR(5),
+  `complemento` VARCHAR(20),
+  `bairro` VARCHAR(30),
+  `id_cidade` INT,
+  `id_estado` INT,
+  `email` VARCHAR(100),
+  `situacao` INT,
   `tipo` CHAR(1)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
@@ -36,4 +36,14 @@ CREATE TABLE `telefone` (
   `tipo` ENUM('M', 'F') NOT NULL DEFAULT 'M',
   PRIMARY KEY (`id_cliente`, `fone`),
   FOREIGN KEY (`id_cliente`) REFERENCES `cliente`(`id_cliente`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+-- cria a tabela de telefone
+CREATE TABLE `veiculo` (
+	  `placa` CHAR(7) NOT NULL PRIMARY KEY,
+    `marca` VARCHAR(100),
+    `modelo` VARCHAR(100),
+    `ano` DATETIME,
+    `cor` VARCHAR(100),
+    `detalhes` VARCHAR(250) COMMENT 'Detalhes e caracteristicas adicionais do veiculo'
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
