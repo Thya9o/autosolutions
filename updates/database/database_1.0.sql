@@ -40,7 +40,8 @@ CREATE TABLE `telefone` (
 
 -- cria a tabela de telefone
 CREATE TABLE `veiculo` (
-  `placa` CHAR(7) NOT NULL PRIMARY KEY,
+  `id_veiculo` INT NOT NULL PRIMARY KEY,
+  `placa` CHAR(7) NOT NULL,
   `marca` VARCHAR(100),
   `modelo` VARCHAR(100),
   `ano` DATETIME,
