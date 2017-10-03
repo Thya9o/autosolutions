@@ -38,13 +38,22 @@ CREATE TABLE `telefone` (
   FOREIGN KEY (`id_cliente`) REFERENCES `cliente`(`id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
--- cria a tabela de telefone
+-- cria a tabela de veiculo
 CREATE TABLE `veiculo` (
-  `id_veiculo` INT NOT NULL PRIMARY KEY,
+  `id_veiculo` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `placa` CHAR(7) NOT NULL,
   `marca` VARCHAR(100),
   `modelo` VARCHAR(100),
   `ano` DATETIME,
   `cor` VARCHAR(100),
   `detalhes` VARCHAR(250) COMMENT 'Detalhes e caracteristicas adicionais do veiculo'
+) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
+
+-- cria a tabela de relação entre cliente e veiculo
+CREATE TABLE `cliente_veiculo` (
+  `id_cliente` INT NOT NULL,
+  `id_veiculo` INT NOT NULL,
+  PRIMARY KEY (`id_cliente`, `id_veiculo`),
+  FOREIGN KEY (`id_cliente`) REFERENCES `cliente`(`id_cliente`),
+  FOREIGN KEY (`id_veiculo`) REFERENCES `veiculo`(`id_veiculo`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
