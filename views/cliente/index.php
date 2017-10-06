@@ -2,17 +2,11 @@
 use yii\helpers\Html;
 use kartik\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\ClienteSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'Clientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="panel panel-primary">
 	<div class="panel-body">
-        <h1><?= Html::encode($this->title) ?></h1>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
         <p>
             <?= Html::a('Novo Cliente', ['cadastrar'], ['class' => 'btn btn-success btn-flat']) ?>
         </p>
@@ -39,11 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                    // 'email:email',
                    // 'situacao',
                    // 'tipo',
-                   
                    ['class' => 'yii\grid\ActionColumn'],
                 ],
-                'responsive'=>true,
-                'hover'=>true
+                'responsive' => false,
+                'hover' => true
             ]);
        ?>
     </div>

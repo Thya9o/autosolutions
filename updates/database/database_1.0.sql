@@ -3,8 +3,14 @@
 -- 04/09/2017
 -- Cria uma database inicial (vazia)
 -- ----------------------------------------------------------------------------------------------------------------
+-- seta uma database default ara uso
+USE `mysql`;
+-- deleta a database antiga
+DROP DATABASE IF EXISTS `autosolutions`;
 --  cria a database
 CREATE DATABASE `autosolutions` CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+-- seta a nova database para uso
+USE `autosolutions`;
 -- ----------------------------------------------------------------------------------------------------------------
 -- cria a tabela de clientes
 CREATE TABLE `cliente` (
