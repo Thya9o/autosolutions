@@ -35,11 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
                    // 'email:email',
                    // 'situacao',
                    // 'tipo',
-                   
                    ['class' => 'yii\grid\ActionColumn'],
                 ],
-                'responsive'=>true,
-                'hover'=>true
+                'responsive' => false,
+                'hover' => true
             ]);
        ?>
     </div>
