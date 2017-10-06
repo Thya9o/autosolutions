@@ -59,6 +59,7 @@ AppAsset::register($this);
             	            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             	        ]);
                     ?>
+                    <h3><?= Html::encode($this->title) ?></h3>
                     <?= $content ?>
                 </div>
         	</div>

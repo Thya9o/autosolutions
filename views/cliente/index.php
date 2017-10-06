@@ -7,8 +7,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="panel panel-primary">
 	<div class="panel-body">
-        <h1><?= Html::encode($this->title) ?></h1>
-    
         <p>
             <?= Html::a('Novo Cliente', ['cadastrar'], ['class' => 'btn btn-success btn-flat']) ?>
         </p>
