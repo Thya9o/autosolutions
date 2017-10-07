@@ -5,8 +5,12 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "cliente".
+ * Esta é a classe para a tabela (entidade) "cliente".
  *
+ * @include @yii/docs/base-Component.md
+ * @author Thiago You <thya9o@outlook.com>
+ * @since 1.0
+ * 
  * @property integer $id_cliente
  * @property string $nome
  * @property string $sobrenome
@@ -31,16 +35,23 @@ use Yii;
 class Cliente extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
-     */
+    * Retorna o nome da tabela (entidade) utilizada pela classe.
+    * 
+    * @return string => Nome da tabela
+    */
     public static function tableName()
     {
         return 'cliente';
     }
 
     /**
-     * @inheritdoc
-     */
+    * Define as regras, restrições e validações para os atributos da classe.
+    * Estes atributos devem possuír no mínimo as mesmas restrições dos atributos da tabela na database,
+    * para que não ocorra erro durante a persistência.
+    * Regras adicionais podem ser aplicadas.
+    *
+    * @return array => regras para os atributos
+    */
     public function rules()
     {
         return [
@@ -61,8 +72,10 @@ class Cliente extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
-     */
+    * Retorna a label (descrição) de cada atirbuto
+    * 
+    * @return array => labels de cada atirbuto da classe
+    */
     public function attributeLabels()
     {
         return [
@@ -88,24 +101,31 @@ class Cliente extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
+    * Procura e retorna uma lista de telefones que possuem relação com a tabela cliente
+    *
+    * ```
+    * $component->hasMany(class::(), ['atributo' => 'atributo']);
+    * ```
+    *
+    * @return array => telefone relacionados com cliente ou null se nada for encontrado
+    */
     public function getTelefones()
     {
         return $this->hasMany(Telefone::className(), ['id_cliente' => 'id_cliente']);
     }
     
     /**
-     * @return \yii\db\ActiveQuery
+     * Inicializa a data de cadastro como a data atual antes de persistir os dados.
+     * Este método chama o beforeSave (mesmo método) da super classe enviando o $insert.
+     *
+     * @param array $insert => atributos que foram alterados no registro
+     * @return boolean => true (verdadeiro) 
      */
     public function beforeSave($insert)
     {
-        if (!parent::beforeSave($insert)) {
-            return false;
-        }
-        
-        $this->data_cadastro = date('Y-m-d');
-        
+        parent::beforeSave($insert);
+
+        $this->data_cadastro = date('Y-m-d');   
         return true;
     }
 }
