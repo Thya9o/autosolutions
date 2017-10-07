@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 <?php $form = ActiveForm::begin(); ?>
-	<div class="panel panel-primary">
+	<div class="panel panel-primary panel-box">
 		<div class="panel-body">
 			<fieldset>
 				<legend>Informações Principais</legend>
@@ -75,12 +75,20 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="panel-footer">
     		<div class="row">
-    			<div class="col-md-12">
+    			<div class="col-md-3">
                     <div class="form-group">
-                        <?= Html::submitButton($model->isNewRecord ? 'Cadastrar' : 'Alterar', [
+                        <?= Html::submitButton('<i class="fa fa-save"></i>&nbsp; '. ($model->isNewRecord ? 'Cadastrar' : 'Alterar'), [
                                 'class' => $model->isNewRecord 
-                                ? 'btn btn-success btn-flat' 
-                                : 'btn btn-primary btn-flat'            
+                                ? 'btn btn-emerald btn-flat btn-block' 
+                                : 'btn btn-primary btn-flat btn-block'            
+                            ]);
+                        ?>
+                    </div>
+    			</div>
+    			<div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <?= Html::a('<i class="fa fa-reply"></i>&nbsp; Voltar', ['/cliente'], [
+                                'class' => 'btn btn-flat btn-warning btn-block',
                             ]);
                         ?>
                     </div>

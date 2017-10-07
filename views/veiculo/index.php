@@ -5,24 +5,30 @@ use kartik\grid\GridView;
 $this->title = 'Veiculos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-primary panel-box">
 	<div class="panel-body">
         <p>
-            <?= Html::a('Cadastrar Veículo', ['cadastrar'], ['class' => 'btn btn-success btn-flat']) ?>
+            <?= Html::a('<i class="fa fa-plus"></i>&nbsp; Veículo', ['cadastrar'], [
+                    'class' => 'btn btn-emerald btn-flat',
+                    'title' => 'Cadastrar Novo Veiculo',
+                    'data-toggle' => 'tooltip',
+                ]);
+            ?>
         </p>
         <?= GridView::widget([
                 'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
                     'id_veiculo',
                     'placa',
                     'marca',
                     'modelo',
                     'ano',
-                    // 'cor',
-                    // 'detalhes',
-                    ['class' => 'yii\grid\ActionColumn'],
+                    'cor',
+                    'detalhes',
+                    [
+                        'class' => 'yii\grid\ActionColumn',
+                        'template' => '{update}{delete}', 
+                    ],
                 ],
             ]);
         ?>

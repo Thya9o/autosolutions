@@ -5,25 +5,29 @@ use kartik\grid\GridView;
 $this->title = 'Clientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-primary panel-box">
 	<div class="panel-body">
         <p>
-            <?= Html::a('Novo Cliente', ['cadastrar'], ['class' => 'btn btn-success btn-flat']) ?>
+            <?= Html::a('<i class="fa fa-plus"></i>&nbsp; Cliente', ['cadastrar'], [
+                    'class' => 'btn btn-emerald btn-flat',
+                    'title' => 'Cadastrar Novo Cliente',
+                    'data-toggle' => 'tooltip',
+                ]);
+            ?>
         </p>
        <?= GridView::widget([
-                'dataProvider'=> $dataProvider,
-                'filterModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                //'filterModel' => $searchModel,
                 'columns' => [
-                   ['class' => 'yii\grid\SerialColumn'],
                    'id_cliente',
                    'nome',
                    'sobrenome',
                    'apelido',
                    'documento',
-                   // 'sexo',
-                   // 'data_nascimento',
+                   'sexo',
+                   'data_nascimento',
                    // 'data_cadastro',
-                   // 'cep',
+                   'cep',
                    // 'endereco',
                    // 'numero',
                    // 'complemento',
@@ -31,9 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                    // 'id_cidade',
                    // 'id_estado',
                    // 'email:email',
-                   // 'situacao',
-                   // 'tipo',
-                   ['class' => 'yii\grid\ActionColumn'],
+                   'tipo',
+                   'situacao',
+                   [
+                       'class' => 'yii\grid\ActionColumn',
+                       'template' => '{update}{delete}',
+                   ],
                 ],
                 'responsive' => false,
                 'hover' => true

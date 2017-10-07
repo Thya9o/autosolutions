@@ -54,7 +54,7 @@ class ClienteController extends BaseController
         $model = new Cliente();
 
         if($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_cliente]);
+            return $this->redirect(['index']);
         }
           
         return $this->render('create', [
@@ -74,7 +74,7 @@ class ClienteController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_cliente]);
+            return $this->redirect(['index']);
         }
         
         return $this->render('update', [
@@ -94,6 +94,19 @@ class ClienteController extends BaseController
         return $this->redirect(['index']);
     }
 
+    //TODO
+    /**
+     * Redireciona para as actions corretas ate os links serem acertados
+     */
+    public function actionUpdate($id)
+    {
+     return $this->redirect(['alterar', 'id' => $id]);
+    }
+    public function actionDelete($id)
+    {
+     return $this->redirect(['deletar', 'id' => $id]);
+    }
+    
     /**
      * Finds the Cliente model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -106,7 +119,7 @@ class ClienteController extends BaseController
         if(($model = Cliente::findOne($id)) !== null) {
             return $model;
         }else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('Página não encontrada.');
         }
     }
 }

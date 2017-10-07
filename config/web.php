@@ -1,17 +1,20 @@
 <?php
-
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'autosolutionsSystem',
+    'language' => 'pt-BR',
+    'sourceLanguage' => 'pt-BR',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'name' => 'Auto Solutions',
     'components' => [
-        'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+        'i18n' => [
+            'translations' => [
+                'kvgrid'=> [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
                 ],
             ],
         ],
@@ -47,16 +50,21 @@ $config = [
    			'showScriptName' => false,
    			'enablePrettyUrl' => true,
    			'rules' => array(
-   					'<controller:\w+>/<id:\d+>' => '<controller>/view',
-   					'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-   					'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-   			),
+				'<controller:\w+>/<id:\d+>' => '<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+				'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+  			),
     	],
     ],
     'params' => $params,
     'modules' => [
         'gridview' =>  [
-            'class' => 'kartik\grid\Module'
+            'class' => 'kartik\grid\Module',
+            'i18n' => [
+                 'class' => 'yii\i18n\PhpMessageSource',
+                 'basePath' => '@kvgrid/messages',
+                 'forceTranslation' => true
+            ],
         ],
     ],
     'container' => [ // configuracao default para o gridview
