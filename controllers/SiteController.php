@@ -69,16 +69,22 @@ class SiteController extends BaseController
      *
      * @return Response|string
      */
-    public function actionLogin()
+    public function actionLogin($invalidAcess = null)
     {
-        if (!Yii::$app->user->isGuest) {
+        if(!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
+        // mensagem de erro ao tentar acessar alguma tela sem login
+        if($invalidAcess) {
+            Yii::$app->session->setFlash('danger', '<i class="fa fa-warning"></i>&nbsp; Oops... Parece que você ainda não está logado. Por favor, realize o login para acessar o sistema');
+        }
+        
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
+        
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -104,9 +110,8 @@ class SiteController extends BaseController
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
+        if($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('success', '<i class="fa fa-check-circle"></i>&nbsp; Obrigado por entrar em contato. Responderemos o mais breve possível.');
             return $this->refresh();
         }
         return $this->render('contact', [

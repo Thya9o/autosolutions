@@ -460,8 +460,8 @@ class Util
      */
     public static function getVersion()
     {
-        $version = exec('git describe --tags');
-        return empty($version) ? Yii::$app->params['version'] : $version;
+        return '1.0';
+        return Yii::$app->params['version'];
     }
 }
 // ----------------------------------------------------------------------------------------------------------

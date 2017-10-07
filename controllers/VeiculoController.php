@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * VeiculoController implements the CRUD actions for Veiculo model.
  */
-class VeiculoController extends Controller
+class VeiculoController extends BaseController
 {
     /**
      * @inheritdoc
@@ -53,13 +53,13 @@ class VeiculoController extends Controller
     {
         $model = new Veiculo();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_veiculo]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
         }
+        
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -72,13 +72,13 @@ class VeiculoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_veiculo]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        if($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
         }
+        
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -94,6 +94,19 @@ class VeiculoController extends Controller
         return $this->redirect(['index']);
     }
 
+    //TODO
+    /**
+     * Redireciona para as actions corretas ate os links serem acertados
+     */
+    public function actionUpdate($id)
+    {
+        return $this->redirect(['alterar', 'id' => $id]);
+    }
+    public function actionDelete($id)
+    {
+     return $this->redirect(['deletar', 'id' => $id]);
+    }
+    
     /**
      * Finds the Veiculo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -103,10 +116,10 @@ class VeiculoController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Veiculo::findOne($id)) !== null) {
+        if(($model = Veiculo::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+        }else {
+            throw new NotFoundHttpException('Página não encontrada.');
         }
     }
 }
